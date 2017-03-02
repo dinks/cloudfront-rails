@@ -2,6 +2,8 @@
 
 This Gem is a shameless copy of [cloudflare-rails](https://github.com/modosc/cloudflare-rails), but for CloudFront
 
+![](https://api.travis-ci.org/dinks/cloudfront-rails.svg)
+
 ## Installation
 
 __This is created for Rails 4 as of now__
