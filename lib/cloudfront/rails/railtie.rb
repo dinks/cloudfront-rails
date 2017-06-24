@@ -10,7 +10,7 @@ module Cloudfront
         end
       end
 
-      Rack::Request.prepend CheckTrustedProxies
+      Rack::Request::Helpers.prepend CheckTrustedProxies
 
       module RemoteIpProxies
         def proxies
