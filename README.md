@@ -1,12 +1,12 @@
 # Cloudfront::Rails
 
-This Gem is a shameless copy of [cloudflare-rails](https://github.com/modosc/cloudflare-rails), but for CloudFront
+This Gem is a shameless copy of [cloudflare-rails](https://github.com/modosc/cloudflare-rails), but for [CloudFront](https://aws.amazon.com/cloudfront/)
 
 ![](https://api.travis-ci.org/dinks/cloudfront-rails.svg)
 
 ## Installation
 
-__This is created for Rails 4 as of now__
+__This gem now supports Rails 5,, for Rails 4, please use version ~> 0.1.0__
 
 Add this line to your application's Gemfile:
 
@@ -43,7 +43,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/cloudfront-rails. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/dinks/cloudfront-rails. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
