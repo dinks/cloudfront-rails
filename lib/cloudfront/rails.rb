@@ -1,5 +1,4 @@
 require "rails"
-require "httparty"
 
 require "cloudfront/rails/version"
 
@@ -10,4 +9,5 @@ module Cloudfront
 end
 
 require "cloudfront/rails/importer"
+require "cloudfront/rails/importer/response_error"
 require "cloudfront/rails/railtie"

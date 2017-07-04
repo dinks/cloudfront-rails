@@ -1,20 +1,23 @@
 module Cloudfront
   module Rails
     class Importer
-      include HTTParty
-
-      base_uri "https://ip-ranges.amazonaws.com"
-      follow_redirects true
-      default_options.update(verify: true)
-
-      class ResponseError < HTTParty::ResponseError; end
-
       class << self
         def fetch
-          resp = get "/ip-ranges.json", timeout: ::Rails.application.config.cloudfront.timeout
+          uri = URI("https://ip-ranges.amazonaws.com/ip-ranges.json")
 
-          if resp.success?
-            json = ActiveSupport::JSON.decode resp
+          response = Net::HTTP.start(uri.host,
+                                     uri.port,
+                                     use_ssl: uri.scheme == 'https',
+                                     open_timeout: ::Rails.application.config.cloudfront.timeout,
+                                     read_timeout: ::Rails.application.config.cloudfront.timeout,
+                                     ssl_timeout:  ::Rails.application.config.cloudfront.timeout
+                                    ) do |http|
+            http.request(Net::HTTP::Get.new(uri))
+          end
+
+          case response
+          when Net::HTTPSuccess
+            json = ActiveSupport::JSON.decode response.body
 
             trusted_ipv4_proxies = json["prefixes"].map do |details|
                                      IPAddr.new(details["ip_prefix"])
@@ -26,7 +29,7 @@ module Cloudfront
 
             trusted_ipv4_proxies + trusted_ipv6_proxies
           else
-            raise ResponseError.new(resp.response)
+            raise ResponseError.new(response)
           end
         end
 
