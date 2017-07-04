@@ -1,3 +1,4 @@
+require "rails"
 require "httparty"
 
 module Cloudfront
