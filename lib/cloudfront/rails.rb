@@ -1,4 +1,5 @@
 require "rails"
+require "net/http"
 
 require "cloudfront/rails/version"
 
