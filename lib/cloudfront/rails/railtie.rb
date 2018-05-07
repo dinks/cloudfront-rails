@@ -34,7 +34,7 @@ module Cloudfront
             resp = get "/ip-ranges.json", timeout: ::Rails.application.config.cloudfront.timeout
 
             if resp.success?
-              json = ActiveSupport::JSON.decode resp
+              json = ActiveSupport::JSON.decode resp.body
 
               trusted_ipv4_proxies = json["prefixes"].map do |details|
                                        IPAddr.new(details["ip_prefix"])
