@@ -10,7 +10,7 @@ Add this line to your application's Gemfile:
 
 ```ruby
 group :production do
-  gem 'cloudfront-rails'
+  gem 'whitelist_cloudfront_proxies_rails'
 end
 ```
 
@@ -20,7 +20,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install cloudfront-rails
+    $ gem install whitelist_cloudfront_proxies_rails
 
 ## Usage
 
@@ -41,7 +41,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/cloudfront-rails. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/whitelist-cloudfront-proxies-rails. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License

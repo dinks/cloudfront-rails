@@ -4,10 +4,10 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'cloudfront/rails/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "cloudfront-rails"
+  spec.name          = "whitelist_cloudfront_proxies_rails"
   spec.version       = Cloudfront::Rails::VERSION
-  spec.authors       = ["Dinesh V"]
-  spec.email         = ["dinesh@blinkist.com"]
+  spec.authors       = ["Justus R"]
+  spec.email         = ["justus.renton@avant.com"]
 
   spec.summary       = %q{ Whitelist Cloudfront Proxies }
   spec.description   = %q{ Whitelist Cloudfront Proxies for Rails so that request.ip and request.remote_ip work properly }
@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "webmock"
 
   spec.add_dependency "rails", "~> 4.0"
-  spec.add_dependency "httparty"
+  spec.add_dependency "httparty", ">= 0.13.7"
 
   spec.required_ruby_version = ">= 2.0"
 end
