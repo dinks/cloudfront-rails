@@ -34,13 +34,17 @@ module Cloudfront
             resp = get "/ip-ranges.json", timeout: ::Rails.application.config.cloudfront.timeout
 
             if resp.success?
-              json = ActiveSupport::JSON.decode resp
+              json = ActiveSupport::JSON.decode resp.body
 
-              trusted_ipv4_proxies = json["prefixes"].map do |details|
+              trusted_ipv4_proxies = json["prefixes"].select do |details|
+                                       details["service"] == 'CLOUDFRONT'
+                                     end.map do |details|
                                        IPAddr.new(details["ip_prefix"])
                                      end
 
-              trusted_ipv6_proxies = json["ipv6_prefixes"].map do |details|
+              trusted_ipv6_proxies = json["ipv6_prefixes"].select do |details|
+                                       details["service"] == 'CLOUDFRONT'
+                                     end.map do |details|
                                        IPAddr.new(details["ipv6_prefix"])
                                      end
 

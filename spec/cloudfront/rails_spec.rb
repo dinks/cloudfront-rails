@@ -16,6 +16,10 @@ describe Cloudfront::Rails do
       end
     end
 
+    let(:cloudfront_ip1) { "13.124.199.0/24" }
+    let(:cloudfront_ip2) { "2600:9000::/28" }
+    let(:cloudfront_ips) { [cloudfront_ip1, cloudfront_ip2] }
+
     let(:ip_ranges) do
       <<EOF
 {
@@ -32,6 +36,11 @@ describe Cloudfront::Rails do
         "ip_prefix": "13.54.0.0/15",
         "region": "ap-southeast-2",
         "service": "AMAZON"
+    },
+    {
+        "ip_prefix": "#{cloudfront_ip1}",
+        "region": "ap-southeast-2",
+        "service": "CLOUDFRONT"
     }
   ],
   "ipv6_prefixes": [
@@ -44,6 +53,11 @@ describe Cloudfront::Rails do
         "ipv6_prefix": "2400:6500:0:7100::/56",
         "region": "ap-northeast-1",
         "service": "AMAZON"
+    },
+    {
+        "ipv6_prefix": "#{cloudfront_ip2}",
+        "region": "GLOBAL",
+        "service": "CLOUDFRONT"
     }
   ]
 }
@@ -68,7 +82,7 @@ EOF
 
       expect { rails_app.initialize! }.to_not raise_error
 
-      expect(rails_app.config.cloudfront.ips.size).to eq(4)
+      expect(rails_app.config.cloudfront.ips).to eq(cloudfront_ips)
     end
 
     describe "with unsuccessful responses" do
