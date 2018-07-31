@@ -6,7 +6,7 @@ This Gem is a shameless copy of [cloudflare-rails](https://github.com/modosc/clo
 
 ## Installation
 
-__This gem now supports Rails 5,, for Rails 4, please use version ~> 0.1.0__
+__This gem supports Rails 4 and 5__
 
 Add this line to your application's Gemfile:
 
@@ -49,4 +49,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/dinks/
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
